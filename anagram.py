@@ -1,9 +1,9 @@
-f = open("dictionary_words.txt", "r")
-f = f.readlines()
+f = open("words.txt", "r")
+f = f.read()
 f = "".join(f)
-f = f.split("\n")
+f = str(f)
+f = f.split(" ")
 user_input = input("type an anagram: ")
-
 def check(user_input, f):
     for word in f:
         if(sorted(user_input)== sorted(word)): 
