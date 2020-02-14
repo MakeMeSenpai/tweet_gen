@@ -14,19 +14,31 @@ def histogram(source_text=None):
     user_input = input("Enter y to select a word (else see all): ")
     user_input.lower()
     if user_input == "y":
-        selected = input("Type your word: ")
-        selected = selected.capitalize() # cleans our output by turning them all capital
-        for word in f:
-            word = word.capitalize()
-            if selected == word:
-                word_histogram[selected] = word_histogram.get(selected, 0) + 1
-        return word_histogram
+        return frequency(f, word_histogram)
             
     for word in f:    
         word = word.rstrip() # takes away extra white space
         word = word.capitalize()
         word_histogram[word] = word_histogram.get(word, 0) + 1
-    return word_histogram
+
+    #gives our dictiionary extra space when sprinted -note that sep and end only work in print statements
+    for k, v in word_histogram.items():
+        print(str(k), str(v), sep="-->", end=" | ")
+
+def unique_words(f):
+    for count in range(len(f)):
+        count += 1
+    return count
+
+def frequency(f, word_histogram):
+    selected = input("Type your word: ")
+    selected = selected.capitalize() # cleans our output by turning them all capital
+    for word in f:
+        word = word.capitalize()
+        if selected == word:
+            word_histogram[selected] = word_histogram.get(selected, 0) + 1
+    return f"{word_histogram} | Out of Unique words:{unique_words(f)}"
+    
 
 #Returns a clean output with seperatores to not confuse users when running the program multiple times
 print("-----------------------------------------------------------------------------------------------------")  
