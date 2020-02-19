@@ -1,7 +1,6 @@
 import sys as S
 #from random import randint
 from numpy import random
-from histogram import histogram
 
 #checks whether the file was called with a variable
 def file_input():
@@ -12,6 +11,8 @@ def file_input():
     return [str(argv), str(True)]
   return [str(argv), str(False)]
 
+#fixes import error
+from histogram import histogram
 
 def bysample():
   values = ' '.join(file_input())
@@ -43,7 +44,7 @@ def sample_by_frequency():
     # word = h[randint(0, 7)]
 
     return str(word)
-  return h
+  return str(h)
 
 #runs our program!... but twice for some reason
 print(sample_by_frequency())

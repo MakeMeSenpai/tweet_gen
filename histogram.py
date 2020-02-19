@@ -1,17 +1,17 @@
 # made optional parameter to meet source_text requirements (note: this is an old way. in py 3.7.4? update there are optiional params and setting orders)
-def histogram(source_text=None, bysamlple=False):
+def histogram(source_text="", bysamlple=False):
     #this counts as a booleen, equvilent to none == false. this makes our default file, or the users be read
     if not source_text:
         f = open("everyManInHisHumor.txt", "r")
     else:
-        f = open(source_text, "r")
+        f = open(source_text, "r") #FLASK STATES:  expected str, bytes or os.PathLike object, not list
     f = " ".join(f)
     f = f.split()
 
     word_histogram = {}
 
     #gives the user the option to choose a single word or see entire histogram if not ran by sample.py
-    if not bysamlple:
+    if bysamlple == False: #BYSAMPLE ALWAYS RETURNS TRUE?!
         user_input = input("Enter y to select a word (else see all): ")
         user_input.lower()
         if user_input == "y":
