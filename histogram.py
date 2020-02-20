@@ -11,7 +11,7 @@ def histogram(source_text="", bysamlple=False):
     word_histogram = {}
 
     #gives the user the option to choose a single word or see entire histogram if not ran by sample.py
-    if bysamlple == False: #BYSAMPLE ALWAYS RETURNS TRUE?!
+    if not bysamlple: #BYSAMPLE ALWAYS RETURNS TRUE?!
         user_input = input("Enter y to select a word (else see all): ")
         user_input.lower()
         if user_input == "y":
@@ -51,5 +51,5 @@ if file_input() == "True":
 elif file_input() == "False":
     #Returns a clean output with seperatores to not confuse users when running the program multiple times
     print("-----------------------------------------------------------------------------------------------------")  
-    print(histogram())
+    print(type(histogram()))
     print("#####################################################################################################")

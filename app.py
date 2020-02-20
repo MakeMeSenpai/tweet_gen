@@ -9,10 +9,9 @@ def hello():
     #build a histogram
     my_file = open("./words.txt", "r")
     lines = my_file.readlines()
-    my_histogram = histogram(lines) #PATH TO FLASK ERROR
 
-    word = sample_by_frequency(my_histogram)
-    return word
+    word = sample_by_frequency(histogram(lines))
+    return str(word)
     
 
 if __name__ == '__main__':
