@@ -9,7 +9,7 @@ def histogram(source_text="", bysamlple=False):
     f = f.split()
 
     word_histogram = {}
-
+ 
     #gives the user the option to choose a single word or see entire histogram if not ran by sample.py
     if not bysamlple: #BYSAMPLE ALWAYS RETURNS TRUE?!
         user_input = input("Enter y to select a word (else see all): ")
