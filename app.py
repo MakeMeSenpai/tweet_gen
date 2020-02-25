@@ -6,13 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    #build a histogram
-    my_file = open("./words.txt", "r")
-    lines = my_file.readlines()
-
-    word = sample_by_frequency(histogram(lines))
-    return str(word)
+    return ' '.join(sample_by_frequency(15)) #runs our program giving us 15 random words
     
-
 if __name__ == '__main__':
     app.run()

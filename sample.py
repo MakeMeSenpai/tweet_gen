@@ -1,50 +1,20 @@
 import sys as S
-#from random import randint
 from numpy import random
-
-#checks whether the file was called with a variable
-def file_input():
-  argv = None
-  if len(S.argv) == 2:
-    argv = S.argv[1]
-#you can return multiple values just with a ','; However this saves as a tuple, so we'll turned it into a list
-    return [str(argv), str(True)]
-  return [str(argv), str(False)]
-
-#fixes import error
 from histogram import histogram
 
-def bysample():
-  values = ' '.join(file_input())
-  values = values.split()
-  argv = values[0]
-  if values[1] == "False":
-    h = histogram(None, True)
-    return h
-  elif ".txt" in argv:
-    h = histogram(argv, True)
-    return h
-  else:
-    return "Unaccepted input, must contain ```$python3 sample.py [example.txt](optional input)```"
 
-def sample_by_frequency():
-  h = bysample()
 
-  #checks if h is a dict or a string. if dict run program, else diplay string
-  if isinstance(h, dict):
-    p = []
-    i = []
-    for k, v in h.items(): 
-      p.append(v / 8)
-      i.append(k)
-    word = random.choice(i, 1, p)
+def sample_by_frequency(count):
+  f = open("everyManInHisHumor.txt", "r")
+  f = " ".join(f)
+  f = f.split()
+  h = histogram(f)
 
-    # just another solution using randint
-    # h = h.split()
-    # word = h[randint(0, 7)]
+  p = []
+  i = []
+  for k, v in h.items(): 
+    p.append(v / 49788) # frequency of words / total words
+    i.append(k)
+  word = random.choice(i, count, p)
 
-    return str(word)
-  return str(h)
-
-#runs our program!... but twice for some reason
-print(sample_by_frequency())
+  return word
