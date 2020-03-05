@@ -31,6 +31,17 @@ class Dictogram(dict): #this turns our self method into a dictionary self = {}, 
         # TODO: Retrieve word frequency count
         return self.get(word, 0)
 
+    def sample_by_frequency(self):
+        p = [] # list of percentiles  
+        i = [] # list of items
+        for k, v in self.items(): #grabs keys and value out of dictionary
+            p.append(v / self.tokens) # frequency of words / total words; then adds the percent/chance to our list
+            i.append(k) # adds item to our list
+        # choice takes all the keys, then chooses a word based on the percent
+        words = random.choice(i, 1, p) # we define this as our words
+
+        return words
+
 
 def print_histogram(word_list):
     print('word list: {}'.format(word_list))

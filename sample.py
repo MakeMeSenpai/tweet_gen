@@ -15,6 +15,7 @@ def sample_by_frequency(count):
   for k, v in h.items(): 
     p.append(v / 49788) # frequency of words / total words
     i.append(k)
+  print(p, i)
   word = random.choice(i, count, p)
 
   return word
