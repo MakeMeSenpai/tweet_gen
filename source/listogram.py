@@ -3,7 +3,7 @@
 from __future__ import division, print_function  # Python 2 and 3 compatibility
 
 
-class Listogram(list):
+class Listogram(list): #turns our self into a list; list = self. check dictogram for more.
     """Listogram is a histogram implemented as a subclass of the list type."""
 
     def __init__(self, word_list=None):
@@ -19,20 +19,41 @@ class Listogram(list):
 
     def add_count(self, word, count=1):
         """Increase frequency count of given word by given count amount."""
-        # TODO: Increase word frequency by count
+        for sub_list in self:
+            # if index 0 of our sub list is equal to the word
+            if sub_list[0] == word: 
+                # the word exists and should add count as it's value i.e. [[word, count], [word, count]]
+                sub_list[1] += count
+                break # this stops our for loop
+        # for loops can have else statements, which only run if the for loop is completed
+        else:
+            self.types += 1
+            self.append([word, count])
+
+        #tokens should be incrimented no matter what, to add all values together
+        self.tokens += count
 
     def frequency(self, word):
         """Return frequency count of given word, or 0 if word is not found."""
-        # TODO: Retrieve word frequency count
+        if self.__contains__(word):
+            for sub_list in self:
+                if sub_list[0] == word:
+                    return sub_list[1]
+        else:
+            return 0 
 
     def __contains__(self, word):
         """Return boolean indicating if given word is in this histogram."""
-        # TODO: Check if word is in this histogram
+        for sub_list in self:
+            if sub_list[0] == word:
+                return True           
+        else:
+            return False
 
     def _index(self, target):
         """Return the index of entry containing given target word if found in
         this histogram, or None if target word is not found."""
-        # TODO: Implement linear search to find index of entry with target word
+        return self.index(target, None)
 
 
 def print_histogram(word_list):
