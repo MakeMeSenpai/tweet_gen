@@ -1,4 +1,5 @@
 import random
+from numpy.random import choice
 from dictogram import Dictogram
 
 
@@ -30,12 +31,22 @@ class MarkovChain:
         return markov_chain
 
     def walk(self, num_words):
+        #defines markov_chain as a dictonary
+        markov_chain = {}
+        # selects a random word for our object from markov chain keys
+        current_word = random.choice(list(self.markov_chain.keys()))
         # Creates our sentence list
         sentence = []
         # while i is 0-num_words
         for i in range(num_words):
-            # grab a random word by weighted frequency
-            sentence.append(Dictogram.sample_by_frequency()) #figure out how to call dictogram as an object
+            #defines our Dictogram object
+            markov_chain[current_word] = Dictogram([current_word])
+            #sets temp_word to a random word by weighted frequency
+            temp_word = markov_chain[current_word].sample_by_frequency()
+            # appends it to our sentence
+            sentence.append(temp_word)
+            #changes our focus to the next word
+            current_word = temp_word
         #return the list as a string
         return " ".join(sentence)
 

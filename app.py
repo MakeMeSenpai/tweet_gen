@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def markov():
-    return 
+    return "checkout /sample"
 
 @app.route('/sample')
 def sample():

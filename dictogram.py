@@ -1,7 +1,7 @@
 #!python
 
 from __future__ import division, print_function  # Python 2 and 3 compatibility
-
+import random
 
 class Dictogram(dict): #this turns our self method into a dictionary self = {}, so dict.get works with self.get
     """Dictogram is a histogram implemented as a subclass of the dict type."""
