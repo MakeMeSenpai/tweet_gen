@@ -1,4 +1,4 @@
-import random
+from numpy import random
 from numpy.random import choice
 from dictogram import Dictogram
 

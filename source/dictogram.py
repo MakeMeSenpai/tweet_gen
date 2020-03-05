@@ -1,6 +1,7 @@
 #!python
 
 from __future__ import division, print_function  # Python 2 and 3 compatibility
+# from numpy import random
 import random
 
 class Dictogram(dict): #this turns our self method into a dictionary self = {}, so dict.get works with self.get
@@ -19,6 +20,7 @@ class Dictogram(dict): #this turns our self method into a dictionary self = {}, 
 
     def add_count(self, word, count=1):
         """Increase frequency count of given word by given count amount."""
+        print("add_count:", word, "self:", self)
         if word not in self:
             self.setdefault(word, count)
             self.types += 1
@@ -31,14 +33,15 @@ class Dictogram(dict): #this turns our self method into a dictionary self = {}, 
         # TODO: Retrieve word frequency count
         return self.get(word, 0)
 
-    def sample_by_frequency(self):
+    def sample_by_frequency(self, word_list):
         p = [] # list of percentiles  
         i = [] # list of items
         for k, v in self.items(): #grabs keys and value out of dictionary
             p.append(v / self.tokens) # frequency of words / total words; then adds the percent/chance to our list
             i.append(k) # adds item to our list
+        print("self:", self, "p:", p, "i", i)
         # choice takes all the keys, then chooses a word based on the percent
-        words = random.choice(i, 1, p) # we define this as our words
+        words = random.choice(i) # we define this as our words
 
         return words
 
