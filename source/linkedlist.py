@@ -115,8 +115,12 @@ class LinkedList(object):
 
     def replace(self, item, new):
         node = self.head
-        if node != None:
-            node = Node(new)
+        while node != None:
+            if node.data == item:
+                node.data = new
+                break
+            node = node.next
+        
 
 
 
